@@ -44,6 +44,8 @@ class Wish(models.Model):
 
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name="wishes")
 
+    order = models.IntegerField(default=1)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -51,5 +53,5 @@ class Wish(models.Model):
         return f"{self.title}"
 
     class Meta:
-        ordering = ["created"]
+        ordering = ["order", "created"]
         verbose_name_plural = "Wishes"
