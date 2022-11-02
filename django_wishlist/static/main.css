@@ -1,0 +1,13 @@
+@import "bulma.css";
+
+.masonry {
+    display: flex !important;
+    flex-flow: column wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+
+}
+
+.masonry .column {
+    align-self: flex-start;
+}
