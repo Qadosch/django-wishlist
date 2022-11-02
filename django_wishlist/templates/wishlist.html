@@ -21,27 +21,30 @@
     </div>
 </section>
 <section class="section">
-<div class="container">
-<div class="columns is-desktop is-flex-flow-column-wrap">
-{% for wish in collection.wishes.all %}
-<div class="column is-one-third">
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">
-                {{ wish.title }}
-            </p>
-        </header>
-        <div class="card-content">
-            {% if wish.subtitle %}
-              <div class="subtitle">{{ wish.subtitle }}</div>
-            {% endif %}
-            {% if wish.comment %}
-              <p class="content">{{ wish.comment }}</p>
-            {% endif %}
-        </div>
-    </div>
-</div>
-{% endfor %}
+  <div class="container">
+<div class="columns grid" data-colcade="columns: .masonry-col, items: .masonry-item">
+  <div class="masonry-col column is-one-third"></div>
+  <div class="masonry-col column is-one-third"></div>
+  <div class="masonry-col column is-one-third"></div>
+  {% for wish in collection.wishes.all %}
+
+  <div class="masonry-item card" style="background-color: {{ wish.color }};">
+      <header class="card-header">
+          <p class="card-header-title">
+              {{ wish.title }}
+          </p>
+      </header>
+      <div class="card-content">
+          {% if wish.subtitle %}
+            <div class="subtitle">{{ wish.subtitle }}</div>
+          {% endif %}
+          {% if wish.comment %}
+            <p class="content">{{ wish.comment }}</p>
+          {% endif %}
+      </div>
+
+  </div>
+  {% endfor %}
 </div>
 </div>
 </section>
