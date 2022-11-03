@@ -167,7 +167,7 @@ if USE_SPACES:
 
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'django_wishlist.storage_backends.PublicMediaStorage'
+    DEFAULT_FILE_STORAGE = 'django_wishlist.storage_backend.PublicMediaStorage'
 
 else:
     MEDIA_URL = '/media/'
