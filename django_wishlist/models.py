@@ -11,7 +11,7 @@ class Collection(models.Model):
     subtitle = models.CharField(max_length=120, blank=True)
     comment = models.TextField(blank=True)
     color = ColorField(default="#FFFFFF")
-    image = models.ImageField(null=True, storage=storage_backend.PublicMediaStorage)
+    image = models.ImageField(blank=True, null=True, storage=storage_backend.PublicMediaStorage)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -37,7 +37,7 @@ class Wish(models.Model):
     subtitle = models.CharField(max_length=120, blank=True)
     comment = models.TextField(blank=True)
     color = ColorField(default="#FFFFFF")
-    image = models.ImageField(null=True, storage=storage_backend.PublicMediaStorage)
+    image = models.ImageField(blank=True, null=True, storage=storage_backend.PublicMediaStorage)
 
     wish_type = models.CharField(max_length=10, choices=WISH_TYPES)
     ammount = models.IntegerField(null=True, blank=True)
