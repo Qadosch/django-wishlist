@@ -19,6 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.wishlist_view),
+    path('c/<str:url>/', views.wishlist_view),
     path('admin/', admin.site.urls),
 ]

@@ -6,5 +6,11 @@ __all__ = [
 ]
 
 def wishlist_view(request):
+    if "authstring" in request.session:
+        pass
+
+    if "authstring" in request.GET:
+        pass
+
     html = "<html><body>It is now.</body></html>"
     return HttpResponse(html)
