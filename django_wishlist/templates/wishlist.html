@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<section class="hero is-medium" style="background-color: {{ collection.color }};">
+<section class="hero" style="background-color: {{ collection.color }};">
     <div class="hero-body">
-        <div class="container has-text-centered">
-          <p class="title">
+        <div class="container has-text-centered mb-6">
+          {% if collection.image %}
+          <figure class="image is-3by1 mb-6">
+            <img src="{{ collection.image.url }}">
+          </figure>
+          {% endif %}
+          <p class="title ">
             {{ collection.title }}
           </p>
           {% if collection.subtitle %}
@@ -34,6 +39,11 @@
               {{ wish.title }}
           </p>
       </header>
+      {% if wish.image %}
+      <figure class="image is-4by3 mb-1">
+        <img src="{{ wish.image.url }}">
+      </figure>
+      {% endif %}
       <div class="card-content">
           {% if wish.subtitle %}
             <div class="subtitle">{{ wish.subtitle }}</div>
