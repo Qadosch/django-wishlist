@@ -3,13 +3,15 @@ from django.db import models
 
 from colorfield.fields import ColorField
 
+from . import storage_backend
+
 class Collection(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="collections")
     title = models.CharField(max_length=60)
     subtitle = models.CharField(max_length=120, blank=True)
     comment = models.TextField(blank=True)
     color = ColorField(default="#FFFFFF")
-    # image = models.ImageField(null=True)
+    image = models.ImageField(null=True, storage=storage_backend.PublicMediaStorage)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -35,7 +37,7 @@ class Wish(models.Model):
     subtitle = models.CharField(max_length=120, blank=True)
     comment = models.TextField(blank=True)
     color = ColorField(default="#FFFFFF")
-    # image = models.ImageField(null=True)
+    image = models.ImageField(null=True, storage=storage_backend.PublicMediaStorage)
 
     wish_type = models.CharField(max_length=10, choices=WISH_TYPES)
     ammount = models.IntegerField(null=True, blank=True)
