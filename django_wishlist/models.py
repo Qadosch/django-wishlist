@@ -46,6 +46,8 @@ class Wish(models.Model):
 
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name="wishes")
 
+    gifted = models.BooleanField(default=False)
+
     order = models.IntegerField(default=1)
 
     created = models.DateTimeField(auto_now_add=True)
@@ -57,3 +59,27 @@ class Wish(models.Model):
     class Meta:
         ordering = ["order", "created"]
         verbose_name_plural = "Wishes"
+
+
+class Gift(models.Model):
+    wish = models.ForeignKey(Wish, on_delete=models.CASCADE, related_name="gifts")
+
+    ammount = models.IntegerField(null=True, blank=True)
+    count = models.IntegerField(null=True, blank=True)
+
+    name = models.CharField(max_length=120)
+    email = models.EmailField()
+    address = models.TextField(blank=True)
+    phone =  models.CharField(max_length=60, blank=True)
+
+    comment = models.TextField(blank=True)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.wish.title} from {self.name}"
+
+    class Meta:
+        ordering = ["created"]
+        verbose_name_plural = "Gifts"
