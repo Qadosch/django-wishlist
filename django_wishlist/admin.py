@@ -9,3 +9,7 @@ class CollectionAdmin(admin.ModelAdmin):
 @admin.register(models.Wish)
 class WishAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(models.Gift)
+class GiftAdmin(admin.ModelAdmin):
+    pass
