@@ -45,14 +45,26 @@
       </figure>
       {% endif %}
       <div class="card-content">
-          {% if wish.subtitle %}
-            <div class="subtitle">{{ wish.subtitle }}</div>
-          {% endif %}
-          {% if wish.comment %}
-            <p class="content">{{ wish.comment }}</p>
-          {% endif %}
+        {% if wish.subtitle %}
+          <div class="subtitle">{{ wish.subtitle }}</div>
+        {% endif %}
+        {% if wish.comment %}
+          <p class="content">{{ wish.comment }}</p>
+        {% endif %}
+        {% if wish.link %}
+          <p class="content">
+            <a class="button is-link is-inverted" target="_blank" href="{{ wish.link }}">Klick here</a>
+          </p>
+        {% endif %}
+        {% if wish.percentage %}
+        <progress class="progress" value="{{ wish.percentage }}" max="100"></progress>
+        {% endif %}
       </div>
 
+      <footer class="card-footer">
+        <div class="card-footer-item "></div>
+        <a href="#" class="card-footer-item has-text-dark">Gift</a>
+      </footer>
   </div>
   {% endfor %}
 </div>

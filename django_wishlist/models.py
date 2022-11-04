@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Sum
 
 from colorfield.fields import ColorField
 
@@ -55,6 +56,20 @@ class Wish(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    @property
+    def percentage(self):
+        if self.wish_type == self.MONEY_UNLIMITED:
+            return None
+        if self.gifts.exists():
+            if self.count:
+                gift_sum = self.gifts.aggregate(Sum("count"))["count__sum"]
+                return gift_sum / self.count * 100
+            elif self.ammount:
+                gift_sum = self.gifts.aggregate(Sum("ammount"))["ammount__sum"]
+                return gift_sum / self.ammount * 100
+        else:
+            return 0
 
     class Meta:
         ordering = ["order", "created"]
