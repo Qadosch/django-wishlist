@@ -17,6 +17,10 @@ class Collection(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    email_template_material = models.TextField(blank=True)
+    email_template_money_limited = models.TextField(blank=True)
+    email_template_money_unlimited = models.TextField(blank=True)
+
     def __str__(self):
         return f"{self.title}"
 
@@ -70,6 +74,15 @@ class Wish(models.Model):
                 return gift_sum / self.ammount * 100
         else:
             return 0
+
+    @property
+    def email_template(self) -> str:
+        if self.wish_type == self.MATERIAL:
+            return self.collection.email_template_material
+        if self.wish_type == self.MONEY_UNLIMITED:
+            return self.collection.email_template_money_unlimited
+        if self.wish_type == self.MONEY_LIMITED:
+            return self.collection.email_template_money_limited
 
     class Meta:
         ordering = ["order", "created"]
