@@ -63,8 +63,20 @@
 
       <footer class="card-footer">
         <div class="card-footer-item "></div>
-        <a href="#" class="card-footer-item has-text-dark">Gift</a>
+        <a class="card-footer-item has-text-dark js-modal-trigger" data-target="modal-js-example">Gift</a>
       </footer>
+      <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+      
+        <div class="modal-content">
+          <div class="box">
+            <p>Modal JS example</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
   </div>
   {% endfor %}
 </div>
