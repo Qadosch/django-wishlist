@@ -38,7 +38,7 @@ def wishlist_view(request):
         # Email to gifter
         send_mail(
             f'You gifted {gift.wish.title}',
-            wish.email_template.format(**gift),
+            wish.email_template.format(**gift.values()),
             'tool@wishlist.4862.ch',
             [gift.email],
             fail_silently=False,
@@ -63,7 +63,7 @@ from
 comment
 {comment}
 
-            '''.format(**gift),
+            '''.format(**gift.values()),
             'tool@wishlist.4862.ch',
             [wish.collection.user.email],
             fail_silently=False,
