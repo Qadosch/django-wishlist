@@ -14,12 +14,12 @@ def wishlist_view(request):
 
     if request.method == 'POST':
         wish_id = request.POST['wish_id']
-        ammount = request.POST['ammount']
-        count = request.POST['count']
+        ammount = request.POST.get('ammount', 0)
+        count = request.POST.get('count', 0)
         name = request.POST['name']
         email = request.POST['email']
-        address = request.POST['address']
-        phone = request.POST['phone']
+        address = request.POST.get('address', '')
+        phone = request.POST.get('phone', '')
         comment = request.POST['comment']
 
         wish = models.Wish.objects.get(pk=wish_id)
