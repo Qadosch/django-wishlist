@@ -65,6 +65,7 @@ class Wish(models.Model):
     def percentage(self):
         if self.wish_type == self.MONEY_UNLIMITED:
             return None
+
         if self.gifts.exists():
             if self.count:
                 gift_sum = self.gifts.aggregate(Sum("count"))["count__sum"]
@@ -74,6 +75,34 @@ class Wish(models.Model):
                 return gift_sum / self.ammount * 100
         else:
             return 0
+
+    @property
+    def missing_count(self):
+        if self.wish_type == self.MONEY_UNLIMITED:
+            return None
+
+        if not self.count:
+            return None
+
+        if self.gifts.exists():
+            sum = self.gifts.aggregate(Sum("count"))["count__sum"]
+            return self.count - sum
+
+        return self.count
+
+    @property
+    def missing_ammount(self):
+        if self.wish_type == self.MONEY_UNLIMITED:
+            return None
+
+        if not self.ammount:
+            return None
+
+        if self.gifts.exists():
+            sum = self.gifts.aggregate(Sum("ammount"))["ammount__sum"]
+            return self.ammount - sum
+
+        return self.ammount
 
     @property
     def email_template(self) -> str:

@@ -63,18 +63,20 @@
 
       <footer class="card-footer">
         <div class="card-footer-item "></div>
-        <a class="card-footer-item has-text-dark js-modal-trigger" data-target="modal-js-example">Gift</a>
+        <a class="card-footer-item has-text-dark js-modal-trigger" data-target="modal-{{wish.id}}">Gift</a>
       </footer>
-      <div id="modal-js-example" class="modal">
+      <div id="modal-{{wish.id}}" class="modal">
         <div class="modal-background"></div>
-      
+
         <div class="modal-content">
           <div class="box">
-            <p>Modal JS example</p>
+            <p>{{wish.percentage}}</p>
+            <p>{{wish.missing_count}}</p>
+            <p>{{wish.missing_ammount}}</p>
             <!-- Your content -->
           </div>
         </div>
-      
+
         <button class="modal-close is-large" aria-label="close"></button>
       </div>
   </div>
