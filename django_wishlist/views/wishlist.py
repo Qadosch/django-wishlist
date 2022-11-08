@@ -47,23 +47,7 @@ def wishlist_view(request):
         # Email to admin
         send_mail(
             f'You were gifted {gift.wish.title} from {gift.name}',
-            '''
-Hey, you were gifted
-{wish.title}
-
-ammount {ammount} / {wish.ammount}
-count {count} / {wish.count}
-
-from
-{name}
-{email}
-{address}
-{phone}
-
-comment
-{comment}
-
-            '''.format(**gift.__dict__),
+            'Hey, you were gifted\n{title}\n\nammount {ammount} / {w_ammount}\ncount {count} / {w_count}\n\nfrom\n{name}\n{email}\n{address}\n{phone}\n\ncomment\n{comment}\n\n'.format(title=wish.title,w_ammount=wish.ammount, w_count=wish.count, **gift.__dict__),
             'wishlist@4862.ch',
             [wish.collection.user.email],
             fail_silently=False,
