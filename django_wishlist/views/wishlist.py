@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
@@ -69,5 +70,5 @@ comment
         )
 
     context = {"collection": models.Collection.objects.first()}
-    template = loader.get_template('wishlist.html')
-    return HttpResponse(template.render(context))
+    # template = loader.get_template('wishlist.html')
+    return render(request, "wishlist.html", context)
