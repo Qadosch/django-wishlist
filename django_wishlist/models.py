@@ -53,6 +53,8 @@ class Wish(models.Model):
 
     gifted = models.BooleanField(default=False)
 
+    visible = models.BooleanField(default=True)
+
     order = models.IntegerField(default=1)
 
     created = models.DateTimeField(auto_now_add=True)
