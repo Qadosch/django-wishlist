@@ -19,7 +19,7 @@ def list_collections(request):
     return Collection.objects.all()
 
 @router.get('/{id}', response=CollectionSchema)
-def retrieve_collections(request, id: int):
+def retrieve_collection(request, id: int):
     return get_object_or_404(Collection, pk=id)
 
 
