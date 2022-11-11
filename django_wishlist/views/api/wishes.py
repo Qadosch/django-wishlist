@@ -19,7 +19,7 @@ def list_wishes(request):
     return Wish.objects.all()
 
 @router.get('/{id}', response=WishSchema)
-def retrieve_wishes(request, id):
+def retrieve_wishes(request, id: int):
     return get_object_or_404(Wish, pk=id)
 
 
