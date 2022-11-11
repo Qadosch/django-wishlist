@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from ninja import Router
 from typing import List
 from ninja import ModelSchema
@@ -19,6 +20,6 @@ def list_collections(request):
 
 @router.get('/{id}', response=CollectionSchema)
 def retrieve_collections(request, id):
-    return Collection.objects.get(pk=id)
+    return get_object_or_404(Collection, pk=id)
 
 
