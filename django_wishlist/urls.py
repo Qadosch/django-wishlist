@@ -18,11 +18,22 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from ninja import NinjaAPI
+
+
+from .views.api.collections import router as collections_router
+from .views.api.wishes import router as wishes_router
+
 from . import views
+
+api = NinjaAPI()
+api.add_router("/collections/", collections_router)
+api.add_router("/wishes/", wishes_router)
 
 urlpatterns = [
     path('', views.wishlist_view),
     path('admin/', admin.site.urls),
+    path("api/", api.urls),
 ]
 
 if settings.DEBUG:

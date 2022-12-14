@@ -132,25 +132,29 @@
                   {% if wish.count %}
                   <div class="field">
                     <div class="control">
-                      <input class="input" type="text" name="count">
+                      <input class="input" type="number" min="1" max="{{ wish.missing_count }}" name="count">
                     </div>
                   </div>
                   <div class="field">
                     <div class="control">
-                      / {{ wish.missing_count }}
+                      / {{ wish.missing_count }}X {% if wish.missing_ammount %}{{ wish.missing_ammount }}{% endif %}
                     </div>
                   </div>
 
                   {% else %}
                   <div class="field">
                     <div class="control has-icons-right">
-                      <input class="input" type="text" name="ammount">
+                      <input class="input" type="number" min="1" max="{{ wish.missing_ammount }}" name="ammount">
                       <span class="icon is-right">
                         <span class="mdi mdi-currency-eur"></span>
                       </span>
                     </div>
                   </div>
-
+                  <div class="field">
+                    <div class="control">
+                      / {{ wish.missing_ammount }} <span class="mdi mdi-currency-eur"></span>
+                    </div>
+                  </div>
                   {% endif %}
                 </div>
               </div>
