@@ -5,9 +5,7 @@
     <div class="hero-body">
         <div class="container has-text-centered mb-6">
           {% if collection.image %}
-          <figure class="image is-3by1 mb-6">
-            <img src="{{ collection.image.url }}">
-          </figure>
+          <figure class="image is-3by1 mb-6 header-parallax" style="background-image: url('{{ collection.image.url }}')"></figure>
           {% endif %}
           <p class="title ">
             {{ collection.title }}
