@@ -45,7 +45,7 @@ class Wish(models.Model):
     image = models.ImageField(blank=True, null=True)
 
     wish_type = models.CharField(max_length=10, choices=WISH_TYPES)
-    ammount = models.IntegerField(null=True, blank=True)
+    amount = models.IntegerField(null=True, blank=True)
     count = models.IntegerField(null=True, blank=True)
     link = models.TextField(blank=True)
 
@@ -72,9 +72,9 @@ class Wish(models.Model):
             if self.count:
                 gift_sum = self.gifts.aggregate(Sum("count"))["count__sum"]
                 return gift_sum / self.count * 100
-            elif self.ammount:
-                gift_sum = self.gifts.aggregate(Sum("ammount"))["ammount__sum"]
-                return gift_sum / self.ammount * 100
+            elif self.amount:
+                gift_sum = self.gifts.aggregate(Sum("amount"))["amount__sum"]
+                return gift_sum / self.amount * 100
         else:
             return 0
 
@@ -93,18 +93,18 @@ class Wish(models.Model):
         return self.count
 
     @property
-    def missing_ammount(self):
+    def missing_amount(self):
         if self.wish_type == self.MONEY_UNLIMITED:
             return None
 
-        if not self.ammount:
+        if not self.amount:
             return None
 
         if self.gifts.exists():
-            sum = self.gifts.aggregate(Sum("ammount"))["ammount__sum"]
-            return self.ammount - sum
+            sum = self.gifts.aggregate(Sum("amount"))["amount__sum"]
+            return self.amount - sum
 
-        return self.ammount
+        return self.amount
 
     @property
     def email_template(self) -> str:
@@ -123,7 +123,7 @@ class Wish(models.Model):
 class Gift(models.Model):
     wish = models.ForeignKey(Wish, on_delete=models.CASCADE, related_name="gifts")
 
-    ammount = models.IntegerField(null=True, blank=True)
+    amount = models.IntegerField(null=True, blank=True)
     count = models.IntegerField(null=True, blank=True)
 
     name = models.CharField(max_length=120)
