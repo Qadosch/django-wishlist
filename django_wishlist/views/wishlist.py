@@ -14,7 +14,7 @@ def wishlist_view(request):
 
     if request.method == 'POST':
         wish_id = request.POST['wish_id']
-        ammount = request.POST.get('ammount', 0)
+        amount = request.POST.get('amount', 0)
         count = request.POST.get('count', 0)
         name = request.POST['name']
         email = request.POST['email']
@@ -26,7 +26,7 @@ def wishlist_view(request):
 
         gift = models.Gift.objects.create(
             wish = wish,
-            ammount = ammount,
+            amount = amount,
             count = count,
             name = name,
             email = email,
@@ -35,10 +35,18 @@ def wishlist_view(request):
             comment = comment,
         )
 
+        gift_context = {
+            "count": count,
+            "amount": amount,
+            "name": name,
+            "gift": wish.title,
+            "comment": comment, 
+        }
+
         # Email to gifter
         send_mail(
             f'You gifted {gift.wish.title}',
-            wish.email_template.format(**gift.__dict__),
+            wish.email_template.format(gift_context),
             'wishlist@4862.ch',
             [gift.email],
             fail_silently=False,
@@ -47,7 +55,7 @@ def wishlist_view(request):
         # Email to admin
         send_mail(
             f'You were gifted {gift.wish.title} from {gift.name}',
-            'Hey, you were gifted\n{title}\n\nammount {ammount} / {w_ammount}\ncount {count} / {w_count}\n\nfrom\n{name}\n{email}\n{address}\n{phone}\n\ncomment\n{comment}\n\n'.format(title=wish.title,w_ammount=wish.ammount, w_count=wish.count, **gift.__dict__),
+            'Hey, you were gifted\n{title}\n\namount {amount} / {w_amount}\ncount {count} / {w_count}\n\nfrom\n{name}\n{email}\n{address}\n{phone}\n\ncomment\n{comment}\n\n'.format(title=wish.title,w_amount=wish.amount, w_count=wish.count, **gift.__dict__),
             'wishlist@4862.ch',
             [wish.collection.user.email],
             fail_silently=False,

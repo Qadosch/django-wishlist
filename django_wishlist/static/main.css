@@ -12,3 +12,17 @@
 .masonry-item {
     margin-bottom: 30px;
 }
+
+.parallax {
+      /* The image used */
+  background-image: url("kseniya-lapteva-kOajnscQxW8-unsplash.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
