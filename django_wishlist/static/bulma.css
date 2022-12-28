@@ -3177,6 +3177,7 @@ a.tag:hover {
 
 .title,
 .subtitle {
+  font-family: DancingScript;
   word-break: break-word;
 }
 
@@ -10498,15 +10499,15 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-family-primary {
-  font-family:"DancingScript", sans-serif !important;
+  font-family:"Tinos", sans-serif !important;
 }
 
 .is-family-secondary {
-  font-family:"DancingScript", sans-serif !important;
+  font-family:"Tinos", sans-serif !important;
 }
 
 .is-family-sans-serif {
-  font-family:"DancingScript", sans-serif !important;
+  font-family:"Tinos", sans-serif !important;
 }
 
 .is-family-monospace {
