@@ -139,15 +139,12 @@
                   {% else %}
                   <div class="field is-flex is-flex-direction-column is-justify-content-center is-align-items-end">
                     <div class="control">
-                      {{ wish.missing_amount }}<i class="mdi mdi-currency-eur"></i> still to gift
+                      {{ wish.missing_amount } DKK</i> still to gift
                     </div>
                   </div>
                   <div class="field">
                     <div class="control has-icons-right">
-                      <input class="input" type="number" min="1" max="{{ wish.missing_amount }}" name="amount">
-                      <span class="icon is-right">
-                        <i class="mdi mdi-currency-eur"></i>
-                      </span>
+                      <input placeholder="DKK" class="input" type="number" min="1" max="{{ wish.missing_amount }}" name="amount">
                     </div>
                   </div>
                   {% endif %}
