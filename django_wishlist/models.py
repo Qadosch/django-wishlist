@@ -23,6 +23,10 @@ class Collection(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+    
+    @property
+    def filtered_wishes(self):
+        return self.wishes.filter(visible=False).order_by('order')
 
     class Meta:
         ordering = ["created"]

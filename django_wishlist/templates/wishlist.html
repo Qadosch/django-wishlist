@@ -31,7 +31,7 @@
   <div class="masonry-col column is-one-third"></div>
   <div class="masonry-col column is-one-third"></div>
   <div class="masonry-col column is-one-third"></div>
-  {% for wish in collection.wishes.all %}
+  {% for wish in collection.filtered_wishes %}
 
   <div class="masonry-item card" style="background-color: {{ wish.color }};">
       <header class="card-header">
