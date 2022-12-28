@@ -92,7 +92,7 @@ class Wish(models.Model):
 
         if self.gifts.exists():
             sum = self.gifts.aggregate(Sum("count"))["count__sum"]
-            return self.count - sum
+            return self.count - sum if self.count - sum > 0 else 0
 
         return self.count
 
