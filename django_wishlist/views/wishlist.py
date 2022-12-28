@@ -35,6 +35,10 @@ def wishlist_view(request):
             comment = comment,
         )
 
+        if wish.missing_count == 0 or wish.missing_amount == 0:
+            wish.gifted = True
+            wish.save()
+
         gift_context = {
             "count": count,
             "amount": amount,
