@@ -17,9 +17,9 @@ class Collection(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    email_template_material = models.TextField(blank=True)
-    email_template_money_limited = models.TextField(blank=True)
-    email_template_money_unlimited = models.TextField(blank=True)
+    email_template_material = models.TextField(blank=True, help_text="possible placeholders are (with curly braces): {count}, {amount}, {name}, {gift}, {comment}")
+    email_template_money_limited = models.TextField(blank=True, help_text="possible placeholders are (with curly braces): {count}, {amount}, {name}, {gift}, {comment}")
+    email_template_money_unlimited = models.TextField(blank=True, help_text="possible placeholders are (with curly braces): {count}, {amount}, {name}, {gift}, {comment}")
 
     def __str__(self):
         return f"{self.title}"
