@@ -26,7 +26,7 @@ class Collection(models.Model):
     
     @property
     def filtered_wishes(self):
-        return self.wishes.filter(visible=False).order_by('order')
+        return self.wishes.filter(visible=True).order_by('order')
 
     class Meta:
         ordering = ["created"]
