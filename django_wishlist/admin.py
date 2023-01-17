@@ -9,7 +9,7 @@ class CollectionAdmin(admin.ModelAdmin):
 @admin.register(models.Wish)
 class WishAdmin(admin.ModelAdmin):
     model = models.Wish
-    list_display = ('title', 'order', 'gifted','created', 'updated')
+    list_display = ('title', 'order', 'visible', 'gifted', 'updated', 'created')
 
 @admin.register(models.Gift)
 class GiftAdmin(admin.ModelAdmin):
