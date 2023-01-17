@@ -49,7 +49,7 @@ def wishlist_view(request):
 
         # Email to gifter
         send_mail(
-           gift.wish.email_subject,
+            gift.wish.email_subject,
             wish.email_template.format(**gift_context),
             'wishlist@4862.ch',
             [gift.email],

@@ -122,11 +122,11 @@ class Wish(models.Model):
     @property
     def email_subject(self) -> str:
         if self.wish_type == self.MATERIAL:
-            return f'You gifted {self.title}',
+            return f'You gifted {self.title}'
         if self.wish_type == self.MONEY_UNLIMITED:
-            return f'You gifted money for {self.title}',
+            return f'You gifted money for {self.title}'
         if self.wish_type == self.MONEY_LIMITED:
-            return f'You gifted money for {self.title}',
+            return f'You gifted money for {self.title}'
 
     class Meta:
         ordering = ["order", "created"]
