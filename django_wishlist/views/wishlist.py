@@ -44,12 +44,12 @@ def wishlist_view(request):
             "amount": amount,
             "name": name,
             "gift": wish.title,
-            "comment": comment, 
+            "comment": comment,
         }
 
         # Email to gifter
         send_mail(
-            f'You gifted {gift.wish.title}',
+           gift.wish.email_subject,
             wish.email_template.format(**gift_context),
             'wishlist@4862.ch',
             [gift.email],

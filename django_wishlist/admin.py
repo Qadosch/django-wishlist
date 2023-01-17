@@ -8,7 +8,8 @@ class CollectionAdmin(admin.ModelAdmin):
 
 @admin.register(models.Wish)
 class WishAdmin(admin.ModelAdmin):
-    pass
+    model = models.Wish
+    list_display = ('title', 'order', 'gifted','created', 'updated')
 
 @admin.register(models.Gift)
 class GiftAdmin(admin.ModelAdmin):

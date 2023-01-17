@@ -23,7 +23,7 @@ class Collection(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-    
+
     @property
     def filtered_wishes(self):
         return self.wishes.filter(visible=True).order_by('order')
@@ -118,6 +118,15 @@ class Wish(models.Model):
             return self.collection.email_template_money_unlimited
         if self.wish_type == self.MONEY_LIMITED:
             return self.collection.email_template_money_limited
+
+    @property
+    def email_subject(self) -> str:
+        if self.wish_type == self.MATERIAL:
+            return f'You gifted {self.wish.title}',
+        if self.wish_type == self.MONEY_UNLIMITED:
+            return f'You gifted money for {self.wish.title}',
+        if self.wish_type == self.MONEY_LIMITED:
+            return f'You gifted money for {self.wish.title}',
 
     class Meta:
         ordering = ["order", "created"]
