@@ -63,3 +63,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.enable-line-break {
+  white-space: pre-wrap;
+}

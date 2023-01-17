@@ -13,7 +13,7 @@
           </p>
           {% endif %}
           {% if collection.comment %}
-          <p>
+          <p class="enable-line-break">
             {{ collection.comment }}
           </p>
           {% endif %}
@@ -48,7 +48,7 @@
         {% endif %}
         {% if wish.link %}
           <p class="content">
-            <a class="button is-link is-inverted" target="_blank" href="{{ wish.link }}">Klick here</a>
+            <a class="button is-link is-inverted" target="_blank" href="{{ wish.link }}">Link</a>
           </p>
         {% endif %}
         {% if wish.percentage %}
@@ -58,7 +58,7 @@
 
       <footer class="card-footer">
         <div class="card-footer-item "></div>
-        <a class="card-footer-item has-text-dark js-modal-trigger" data-target="modal-{{wish.id}}">Gift</a>
+        <a class="card-footer-item has-text-dark js-modal-trigger" data-target="modal-{{wish.id}}">Give</a>
       </footer>
       <div id="modal-{{wish.id}}" class="modal">
         <div class="modal-background"></div>
@@ -90,7 +90,7 @@
 
             {% if wish.gifted %}
             <p class="content">
-              Gift is already gifted
+              Gift was already gifted
             </p>
             {% else %}
 
@@ -131,7 +131,7 @@
                   {% if wish.count %}
                   <div class="field is-flex is-flex-direction-column is-justify-content-center is-align-items-end">
                     <div class="control">
-                      {{ wish.missing_count }}x still to gift
+                      {{ wish.missing_count }}x still to give
                     </div>
                   </div>
                   <div class="field">
@@ -143,7 +143,7 @@
                   {% else %}
                   <div class="field is-flex is-flex-direction-column is-justify-content-center is-align-items-end">
                     <div class="control">
-                      {{ wish.missing_amount }} DKK</i> still to gift
+                      {{ wish.missing_amount }} DKK</i> still to give
                     </div>
                   </div>
                   <div class="field">
