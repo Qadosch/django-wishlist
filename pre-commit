@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git log main --pretty=oneline | wc -l > build_number
+git add build_number
